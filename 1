@@ -1,0 +1,61 @@
+#include <iostream>
+#include <stdio.h>
+#include <conio.h>
+#include <string.h>
+#define maks 100
+
+using namespace std;
+
+struct TMhs
+{
+char NIM[9];
+char Nama[21];
+int NilaiUTS,NilaiUAS,NilaiQuis;
+float NilaiAkhir;
+char index;
+};
+
+main ()
+{
+TMhs mhs[maks];
+int i=0, stop;
+char pil;
+do{
+cout << " Data Mahasiswa Ke-"<<i+1<< endl;
+cout << "NIM : "; cin >> mhs[i].NIM;
+cout << "NAMA : "; cin >> mhs[i].Nama;
+cout <<"Nilai Quiz : ";cin >> mhs[i].NilaiQuis;
+cout <<"Nilai UTS : ";cin >> mhs[i].NilaiUTS;
+cout <<"Nilai UAS : ";cin >> mhs[i].NilaiUAS;
+mhs[i].NilaiAkhir=0.2*mhs[i].NilaiQuis+0.3*mhs[i].NilaiUTS+0.5*mhs[i].NilaiUAS;
+stop=i+1;
+if(mhs[i].NilaiAkhir>=80 && mhs[i].NilaiAkhir<=100){
+mhs[i].index='A';
+}
+else if(mhs[i].NilaiAkhir>=59){
+mhs[i].index='B';
+}
+else if(mhs[i].NilaiAkhir>=39){
+mhs[i].index='C';
+}
+else if(mhs[i].NilaiAkhir>=19){
+mhs[i].index='D';
+}
+else if(mhs[i].NilaiAkhir>=0){
+mhs[i].index='E';
+}
+i++;
+cout<<"Lanjut untuk input lagi?(y/n) "; cin>>pil;
+}while(pil=='Y' || pil=='y');
+
+
+cout<<"Data yang telah dimasukkan adalah : \n";
+cout<<"------------------ \n";
+cout<<"| NIM\t | \tNAMA\t | QUIS | UTS | UAS | NA | INDEX | \n";
+cout<<"------------------ \n";
+for(i=0;i<stop;i++)
+{
+cout<< mhs[i].NIM << "\t" << mhs[i].Nama << "\t" << mhs[i].NilaiQuis << "\t" << mhs[i].NilaiUTS << "\t" << mhs[i].NilaiUAS << "\t" << mhs[i].NilaiAkhir << "\t" << mhs[i].index << "\t" << endl;
+}
+cout<<"------------------ \n";
+}
